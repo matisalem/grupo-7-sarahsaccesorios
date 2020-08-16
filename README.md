@@ -7,7 +7,7 @@ sitio. También agregar una breve descripción del público al que apunta el sit
 
 ● Integrantes del equipo
     Matias Salem 
-    Ariel Blejman
+    Arian Blejman
     Hernan Barba
 
 Listado de al menos 5 referentes
