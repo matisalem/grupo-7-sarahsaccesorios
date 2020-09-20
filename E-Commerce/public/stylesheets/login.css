@@ -1,0 +1,59 @@
+main{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+.publicidad {
+    display: none;
+    padding: 0px;
+}
+.publicidad_login{
+    width: 100%;
+    object-fit: cover;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+input{
+    width: 50%;
+    padding: 5px;
+    margin: 5px;
+    text-align: center;
+}
+.btn_ingresar{
+    width: auto;
+    margin: 5px 5px;
+    border-radius: 3px;
+    border: 2px solid #e73378;
+    background-color: #f55492;
+    color: rgb(238, 235, 230);
+    font-size: 20px;
+    font-weight: 600px;
+    padding: 4px 15px;
+    text-align: center;
+}
+a{
+    text-decoration: none;
+    color: black;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+@media (min-width:700px){
+    .publicidad {
+        display: inline-block;
+        width: 50%;
+    }
+    form{
+        width: 50%;
+    }
+}
+
+@media (min-width:1280px){
+    
+}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/stylesheets/footer.css">
+    <link rel="stylesheet" href="/stylesheets/productCreateEdit.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edición de producto</title>
+</head>
+<body>
+    <form action="/products/edit/<%= product.product_id %>" method="POST">
+        <label for="product_id" class= 'createProduct'>ID</label>
+        <input type="text" name="product_id" value="<%= product.product_id %>" required>
+        <label for="product_nombre" class= 'createProduct'>Nombre del articulo</label>
+        <input type="text" name="product_nombre" value="<%= product.product_nombre %>" required>
+        <label for="product_price" class= 'createProduct'>Precio en pesos</label>
+        <input type="text" name="product_price" value="<%= product.product_price %>" required>
+        <label for="product_description" class= 'createProduct'>Descripción</label>
+        <input type="text" name="product_description" value="<%= product.product_description %>" required   >
+        <button type="submit" class= "btn_registro">Guardar cambios</button>
+    </form>
+    <!--Footer-->
+    <%- include("../partials/footer",{}) %>
+</body>
+</html>

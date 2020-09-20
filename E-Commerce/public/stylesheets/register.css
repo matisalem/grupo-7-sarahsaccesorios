@@ -1,0 +1,34 @@
+main{
+    text-align: center;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+input{
+    width: 70%;
+    padding: 5px;
+    margin: 10px;
+    text-align: center;
+}
+.btn_registro{
+    width: auto;
+    margin: 5px 5px;
+    border-radius: 3px;
+    border: 2px solid #e73378;
+    background-color: #f55492;
+    color: rgb(238, 235, 230);
+    font-size: 20px;
+    font-weight: 600px;
+    padding: 4px 15px;
+    text-align: center;
+}
+a{
+    font-size: 10px;
+    text-decoration: none;
+    color: black;
+    padding: 5px;
+    margin-bottom: 20px;
+}

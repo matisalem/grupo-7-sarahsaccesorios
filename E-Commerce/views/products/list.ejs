@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <title>Lista de productos</title>
+</head>
+<body>
+    
+    <div style="display: flex; align-items: center; justify-content: space-around;">
+        <div>ID</div>
+        <div>NOMBRE</div>
+        <div>PRECIO</div>
+        <div>DESCRIPCIÓN</div>
+        <div>ACCIONES</div>
+    </div>
+    <% for(var i=0 ; i < products.length; i++) {%>
+        <div style="display: flex; align-items: center; justify-content: space-around;">
+            <div><%= products[i].product_id %></div>
+            <div><%= products[i].product_nombre %></div>
+            <div><%= products[i].product_price %></div>
+            <div><%= products[i].product_description %></div>
+            <div>
+                <button onclick= "location.href='/products/edit/<%= products[i].product_id %>'">Editar</button>
+                <button onclick= "location.href='/products/delete/<%= products[i].product_id %>'">Eliminar</button>
+            </div>
+        </div>
+
+    <% }%>
+    <a href="/products/create">Agregar un nuevo producto</a>S
+    <!--Footer-->
+    <%- include("../partials/footer",{}) %>
+    
+</body>
+</html>

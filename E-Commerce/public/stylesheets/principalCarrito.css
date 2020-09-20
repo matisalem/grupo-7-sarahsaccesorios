@@ -1,0 +1,140 @@
+body{
+    margin: 0px;
+}
+
+main{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.principal{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h3.art-titulo   {
+    margin: 0px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    vertical-align: middle;
+    text-align: center;
+
+}
+.main {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+.articulos{
+    box-shadow: 5px 4px 3px -1px rgba(0,0,0,0.48);
+    height: 80px;
+    margin-bottom: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 95%;
+
+}
+button.art-eliminar{
+    width: 7%;
+    margin-left: 5px;
+    padding: 0px;
+    font-size: 1.4em;
+    background-color: white;
+    border: none;
+    color: #df4444;
+}
+img.art-imagen{
+    display: none;
+}
+div.art-articulo{
+    width: 80%;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-around;
+}
+
+.art-articulo h4{
+    margin: 0px;
+}
+.art-nombre{
+    align-self: center;
+}
+
+.art-articulo div input{
+    margin: 0px;
+    width: 30px;
+    display: inline-block;
+    border: none;
+    border-bottom: dotted 1px black;
+}
+.art-articulo div h5{
+    margin: 0px;
+    margin-left: 5px;
+    display: inline-block;
+    font-size: 15px;
+}
+
+.total{
+    height: 100px;
+    text-align: center;
+    
+}
+.botonera{
+    height: 100px;
+    text-align: center;
+}
+.botonera button {
+    width: auto;
+    margin: 5px 5px;
+    border-radius: 3px;
+    border: 2px solid #e73378;
+    background-color: #f55492;
+    color: rgb(238, 235, 230);
+    font-size: 15px;
+    font-weight: 600px;
+    padding: 2px 10px;
+    text-align: center;
+}
+@media (min-width:768px)
+{
+    .principal  {
+        width: 70%;
+        min-height: 500px;
+    }
+    .botonera button {
+        width: 160px;
+    }
+    img.art-imagen{
+        display: inline-block;
+        height: 80px;
+    }
+    .total{
+        height: 100px;
+        text-align: right;
+        padding-right: 25px;
+    }
+}
+@media (min-width:1280px)
+{
+    .principal  {
+        width: 60%;
+    }
+    .botonera button {
+        width: 200px;
+    }
+    
+}
+
+
+@media (max-width:298px){
+    .principal {
+        display: none;
+    }
+}

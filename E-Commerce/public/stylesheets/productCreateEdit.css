@@ -1,0 +1,33 @@
+main{
+    text-align: center;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+input{
+    width: 60%;
+    padding: 5px;
+    margin: 2px 5px 10px 5px;
+    text-align: center;
+    border: 0px;
+    border-bottom: dashed 1px black;
+}
+.btn_registro{
+    width: auto;
+    margin: 15px 5px;
+    border-radius: 3px;
+    border: 2px solid #e73378;
+    background-color: #f55492;
+    color: rgb(238, 235, 230);
+    font-size: 20px;
+    font-weight: 600px;
+    padding: 4px 15px;
+    text-align: center;
+}
+
+label.createProduct {
+    font-weight: bold;
+}

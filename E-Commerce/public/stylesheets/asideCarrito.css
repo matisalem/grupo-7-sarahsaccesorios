@@ -1,0 +1,132 @@
+
+aside{
+    display: none;
+}
+
+
+@media (min-width:768px){
+    aside{
+        display: inline-block;
+        width: 30%;
+    }
+    .sec-oferta{
+        width: 30%;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+        position: fixed;
+        
+    }
+    .sec-oferta h3{
+        margin: 10px 5px 5px 5px;
+    }
+    .oferta {
+        box-shadow: 5px 4px 3px -1px rgba(0,0,0,0.48);
+        margin: 7px 10px;
+        width: 80%;
+        height: 125px;
+        display: flex;
+        justify-content: space-around;
+        border: solid 1px gray;
+    }
+    .oferta a{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 200px;
+        background-color: white;
+        height: 125px;
+        padding: 0px;
+        margin: 0px;
+        text-decoration: none;
+    }
+ 
+    .oferta a img {
+        height: 100px;
+    }
+    .oferta a h5  {
+        margin: 2px;
+        color: black;
+    }
+    .oferta form {
+        display: none;
+  
+    }
+
+}
+@media (min-width:1280px){
+    aside{
+        width: 40%;
+    }
+    .sec-oferta{
+        width: 40%;       
+    }
+    .oferta a h5{
+        display: none;
+    }
+    .oferta form {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        margin: 20px 2px;
+    }
+    .oferta form label,input{
+        text-align: center;
+        margin-top: 8px;
+    }
+    .oferta-titulo {
+        font-weight: bold;
+    }
+    .oferta-precio{
+        font-weight: bold;
+    }
+    .oferta-cantidad {
+        border: none;
+        border-bottom: dashed 1px black;
+    }
+    .oferta-agregar{
+        width: 80%;
+        border-radius: 3px;
+        border: 2px solid #e73378;
+        background-color: #f55492;
+        color: rgb(238, 235, 230);
+        font-size: 15px;
+        font-weight: 600px;
+        padding: 2px 10px;
+        text-align: center;
+    }
+
+
+    
+}
+
+@media (max-height:650px){
+
+    .oferta:nth-child(3) 
+    {
+        display: none;
+    }
+ 
+}
+
+@media (max-height:500px){
+
+    .oferta:nth-child(4) 
+    {
+        display: none;
+    }
+ 
+}
+
+@media (max-height:376px){
+
+    aside
+    {
+        display: none;
+    }
+ 
+}

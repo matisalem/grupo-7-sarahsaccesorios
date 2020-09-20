@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/footer.css">
+    <link rel="stylesheet" href="/stylesheets/register.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <title>Formulario de registro</title>
+</head>
+<body>
+    <header></header>
+    <main>
+        <form action="/users/register" method="POST">
+        <h2>Datos para el registro</h2>
+        <input type="text" name= "user_id" placeholder="NOMBRE DE USUARIO" required>
+        <input type="email" name= "user_mail" placeholder="EMAIL" required>
+        <input type="text" name= "user_name" placeholder="NOMBRE" required>
+        <input type="text" name= "user_apellido" placeholder="APELLIDO" required>
+        <input type="tel" name= "user_tel" placeholder="TELEFONO" required>
+        <input type="password" name= "user_password" placeholder="PASSWORD" required>
+        <input type="password" name= "user_password2" placeholder="REINGRESE SU PASSWORD" required>
+
+        <button type="submit" class="btn_registro">Registrarse</button>
+        <a href="/users/login">Ya estoy registrado</a>
+        </form>
+        
+
+    </main>
+    <!--Footer-->
+    <%- include("../partials/footer",{}) %>
+</body>
