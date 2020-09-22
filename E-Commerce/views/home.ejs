@@ -1,21 +1,60 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/stylesheets/footer.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-    <title>Este es el Home</title>
-</head>
-<body>
-    <h1>Hola!</h1>
-    <a href="/users/register">Registro</a>
-    <a href="/users/Login">Login</a>
-    <a href="/Carrito">Carrito</a>
-    <a href="/products/list">Listado de productos</a>
-    
-    <!--Footer-->
-    <%- include("partials/footer",{}) %>
+<!DOCTYPE html>   
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Sarahs Accesorios</title>
+      <link rel= "stylesheet" href= "/stylesheets/sa.css">
+      <link rel= "stylesheet" href= "/stylesheets/header.css">
+      <link rel= "stylesheet" href= "/stylesheets/footer.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 
-</body>
-</html>
+  </head>
+  <body>
+
+    
+      <div class=container>
+        <%- include("partials/header",{}) %>
+          
+        <main>
+            <section id='fp'>
+                <img src="/images/images.jpg">
+            </section>
+            <section id='mainText'>
+                <h2>Destacado Para vos</h2>
+            </section>
+            <section class="aca">
+                <article>
+                    <img src="/images/art.jpg">
+                    <h3 class="nombreArt">Nombre del Articulo</h3>
+                    <p class="cat">Categoria</p>
+                    <h6 class="pre">Precio</h6>
+                </article>
+                <article>
+                    <img src="/images/art.jpg">
+                    <h3 class="nombreArt">Nombre del Articulo</h3>
+                    <p class="cat">Categoria</p>
+                    <h6 class="pre">Precio</h6>
+                </article>
+                <article>
+                    <img src="/images/art.jpg">
+                    <h3 class="nombreArt">Nombre del Articulo</h3>
+                    <p class="cat">Categoria</p>
+                    <h6 class="pre">Precio</h6>
+                </article>
+                <article>
+                    <img src="/images/art.jpg">
+                    <h3 class="nombreArt">Nombre del Articulo</h3>
+                    <p class="cat">Categoria</p>
+                    <h6 class="pre">Precio</h6>
+                </article>
+            </section>
+
+          </main>
+          <!--Footer-->
+        <%- include("partials/footer",{}) %>
+          
+      </div>
+  </body>
+  </html>

@@ -6,6 +6,10 @@ const indexController = {
     carrito: function (req,res,next){
         //Envio el carrito
         res.render ("carrito");
+    },
+    detalle: function (req,res,next){
+        //Envio al Detalle del producto
+        res.render ("detalleProducto");
     } 
 }
 

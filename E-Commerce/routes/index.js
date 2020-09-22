@@ -9,4 +9,6 @@ router.get('/',indexController.home);
 //Ir al carrito
 router.get ('/carrito',indexController.carrito);
 
+router.get ('/detalleproducto/:id?', indexController.detalle);
+
 module.exports = router;

@@ -1,9 +1,17 @@
-main{
+body{
+    margin: 0px;
+}
+
+.bloque{
+    height: 125px;
+}
+.contenedorLogin{
     display: flex;
     flex-direction: row;
     margin-bottom: 20px;
 }
 .publicidad {
+    
     display: none;
     padding: 0px;
 }
@@ -12,6 +20,7 @@ main{
     object-fit: cover;
 }
 form{
+    
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -19,7 +28,7 @@ form{
     justify-content: center;
 }
 
-input{
+form input{
     width: 50%;
     padding: 5px;
     margin: 5px;
@@ -37,7 +46,7 @@ input{
     padding: 4px 15px;
     text-align: center;
 }
-a{
+form a{
     text-decoration: none;
     color: black;
     padding: 5px;

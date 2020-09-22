@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel= "stylesheet" href= "/stylesheets/header.css">
     <link rel="stylesheet" href="/stylesheets/footer.css">
     <link rel="stylesheet" href="/stylesheets/register.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     <title>Formulario de registro</title>
 </head>
 <body>
-    <header></header>
+    <%- include("../partials/header",{}) %>
     <main>
+        <div class= "bloque"><!--es unicamente para ocupar el espacio del header--></div>
         <form action="/users/register" method="POST">
         <h2>Datos para el registro</h2>
         <input type="text" name= "user_id" placeholder="NOMBRE DE USUARIO" required>
