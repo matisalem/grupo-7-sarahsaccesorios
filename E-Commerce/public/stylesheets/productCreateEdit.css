@@ -30,4 +30,9 @@ input{
 
 label.createProduct {
     font-weight: bold;
+    
+}
+
+label:nth-child(1) {
+    margin-top: 125px;
 }

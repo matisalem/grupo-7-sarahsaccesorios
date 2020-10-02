@@ -1,0 +1,17 @@
+table{
+    width: 100%;
+}
+table td{
+    border: solid 1px black;
+    
+    text-align: center;
+ }
+
+ td:nth-child(even){ 
+     width: 30%;
+
+ }
+ td:nth-child(odd){ 
+    width: 10%;
+
+}

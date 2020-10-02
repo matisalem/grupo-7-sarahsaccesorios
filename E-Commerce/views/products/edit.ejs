@@ -2,13 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel= "stylesheet" href= "/stylesheets/header.css">
     <link rel="stylesheet" href="/stylesheets/footer.css">
     <link rel="stylesheet" href="/stylesheets/productCreateEdit.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edición de producto</title>
 </head>
+
 <body>
+    <%- include("../partials/header",{}) %>
     <form action="/products/edit/<%= product.product_id %>" method="POST">
         <label for="product_id" class= 'createProduct'>ID</label>
         <input type="text" name="product_id" value="<%= product.product_id %>" required>
@@ -18,6 +21,12 @@
         <input type="text" name="product_price" value="<%= product.product_price %>" required>
         <label for="product_description" class= 'createProduct'>Descripción</label>
         <input type="text" name="product_description" value="<%= product.product_description %>" required   >
+        <label for="product_category" class= 'createProduct'>Categorias</label>
+        <input type="text" name="product_category" value="<%= product.product_category %>" required   >
+        <label for="product_size" class= 'createProduct'>Tamaño</label>
+        <input type="text" name="product_size" value="<%= product.product_size %>" required   >
+        <label for="product_color" class= 'createProduct'>Colores</label>
+        <input type="text" name="product_color" value="<%= product.product_color %>" required   >
         <button type="submit" class= "btn_registro">Guardar cambios</button>
     </form>
     <!--Footer-->

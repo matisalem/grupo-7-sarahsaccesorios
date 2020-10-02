@@ -13,33 +13,24 @@
   </head>
   <body>
       <div class=container>
-        <%- include("partials/header",{}) %>    
+       <!--  <%- include("partials/header",{}) %>    -->
           <main>
-            <section>
-              <article class='pre1'>
-                  <div class='ar1'>
-                   <div class='foto'>
-                    <img src="/images/art.jpg">
+            <section class = 'producto'>
+                <div class='foto'>
+                  <img src="/images/art.jpg">
+                </div>
+                <div class="detalle">
+                  <h2 class="nombreArt">Nombre del Articulo</h2>
+                  <h3 class="precio">Precio</h3>
+                  <div class='cantidad'>
+                    <h2>Cantidad: </h2>
+                    <a href=""><i class="fas fa-arrow-up"></i></a>
+                    <a href=""><i class="fas fa-arrow-down"></i></a>
                   </div>
-                    <h2 class="nombreArt">Nombre del Articulo</h2>
-                    <h3 class="pre">Precio</h3>
-                  </div>
-                </article>
-              <article class='pre2'>
-                  <h2>Cantidad</h2>
-                  <div>
-                    <i class="fas fa-arrow-up"></i>
-                    <i class="fas fa-arrow-down"></i>
-                  </div>
-                  <h1>Comprar</h1>
-
-                </article>
-                <article class='pre3'>
-                  <div>
-                      <h5>descripcion de los articulos descripcion de los articulos descripcion de los articulos descripcion de los articulos descripcion de los articulos descripcion de los articulos descripcion de los articulos descripcion de los articulos descripcion de los articulos descripcion de los articulos descripcion de los articulos descripcion de los articulos descripcion de los articulos descripcion de los articulos descripcion de los articulos descripcion de los articulos
-                      </h5>
-                    </div>
-                  </article>
+                  <button class = 'btn_comprar'>Comprar</button>
+                  <h5>descripcion de los articulos descripcion de los articulos descripcion de los articulos descripcion de los articulos descripcion de los articulos descripcion de los articulos descripcion de los articulos descripcion de los articulos descripcion de los articulos descripcion de los articulos descripcion de los articulos descripcion de los articulos descripcion de los articulos descripcion de los articulos descripcion de los articulos descripcion de los articulos
+                  </h5>
+                </div>
             </section>
             <section>
               <article class='pre4 pre1'>
@@ -52,33 +43,8 @@
                   </article>
             </section>
           </main>
-          <footer>
-            <section class= 'primera-linea'>
-                <form action="mailto: hbarba00@gmail.com.ar">
-                    <input type="text" name= "newsletter" placeholder="Ingrese su email para suscribirse...">
-                </form>
-            </section>
-            <section class= 'segunda-linea'>
-                <section class= 'izquierda'>
-                    <ul>
-                        <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href=""><i class="fab fa-instagram"></i></a></li>
-                        <li><a href=""><i class="fab fa-linkedin-in"></i></a></li>
-                    </ul>
-                </section>
-                <section class= 'centro'>
-                    <form action="mailto: hbarba00@gmail.com.ar">
-                        <input type="text" name= "newsletter" placeholder="Ingrese su email para suscribirse...">
-                    </form>
-                </section>
-                <section class= 'derecha'>
-                    <form action="mailto: hbarba00@gmail.com.ar">
-                        <input type="submit" value="CONTACTO">
-                    </form> 
-                
-                </section>
-            </section>
-        </footer>
+
+         <!--  <%- include("partials/footer",{}) %>   -->
         </div>
         </body>
         </html>
