@@ -1,6 +1,6 @@
 const fs = require ('fs');
 //pongo aca el products, para poder utilizarlo en todas las funciones.
-let products = JSON.parse(fs.readFileSync (__dirname + "/../database/products.json"));
+let products = JSON.parse(fs.readFileSync (__dirname + "/../database_/products.json"));
 
 const productsController = {
     create: function(req,res,next){
@@ -18,7 +18,7 @@ const productsController = {
             //cargo los productos en la variable
             products.push (newProducts);
             //cargo la variable completa en el JSON
-            fs.writeFileSync (__dirname + "/../database/products.json",JSON.stringify(products));
+            fs.writeFileSync (__dirname + "/../database_/products.json",JSON.stringify(products));
             // muestro respuesta al usuario
             res.redirect ("/products/list");
     },
@@ -54,7 +54,7 @@ const productsController = {
         });
 
         //cargo la variable completa en el JSON - de los nuevos productos con el que quiero borrar filtrado
-        fs.writeFileSync (__dirname + "/../database/products.json",JSON.stringify(newProducts));
+        fs.writeFileSync (__dirname + "/../database_/products.json",JSON.stringify(newProducts));
         // muestro respuesta al usuario
         res.redirect ("/products/list");
     },

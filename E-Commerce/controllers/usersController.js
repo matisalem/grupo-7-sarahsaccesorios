@@ -1,6 +1,6 @@
 const fs = require ('fs');
-let usuarioActivo = JSON.parse(fs.readFileSync (__dirname + "/../database/usuarioActivo.json"));
-let usuarios = JSON.parse(fs.readFileSync (__dirname + "/../database/users.json"));
+let usuarioActivo = JSON.parse(fs.readFileSync (__dirname + "/../database_/usuarioActivo.json"));
+let usuarios = JSON.parse(fs.readFileSync (__dirname + "/../database_/users.json"));
 
 const userController = {
     perfil: function(req,res,next){
@@ -22,7 +22,7 @@ const userController = {
                         res.send ("Hola " + usuario.user_name + "Gracias por logearte");
                         usuarioActivar.user_id = Number (req.body.user_id);
                         //cargo la variable completa en el JSON
-                        fs.writeFileSync (__dirname + "/../database/usuarioActivo.json",JSON.stringify(usuarioActivar));
+                        fs.writeFileSync (__dirname + "/../database_/usuarioActivo.json",JSON.stringify(usuarioActivar));
                     }else{
                         res.send ("Contraseña Invalida")
                     }
@@ -38,7 +38,7 @@ const userController = {
         let newUsuario = req.body;
         newUsuario.user_id = Number (req.body.user_id);
         usuarios.push (newUsuario);
-        fs.writeFileSync (__dirname + "/../database/users.json",JSON.stringify(usuarios));
+        fs.writeFileSync (__dirname + "/../database_/users.json",JSON.stringify(usuarios));
         res.send ("Alta exitosa!!!!");
 
     },
