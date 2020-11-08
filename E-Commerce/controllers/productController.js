@@ -1,15 +1,19 @@
 const fs = require ('fs');
+let db = require('../database/models')
 //pongo aca el products, para poder utilizarlo en todas las funciones.
 let products = JSON.parse(fs.readFileSync (__dirname + "/../database_/products.json"));
 const productsController = {
     create: function(req,res,next){
-        //renderizo el formulario    
+        
+        db.Productos.findAll()
+        .then(function(Productos){
+            return res.render("products/create", )
+        })
+        
         res.render ("products/create");
         } ,
     store: function (req,res,next){
             
-            //validation result
-            console.log(validationResult(req))
             //Tomo los datos del body. Tomo el producto como objeto
             let newProducts = req.body;
             //Casteo los campos - Porque aun que el tipo sea number viene como string
@@ -61,7 +65,11 @@ const productsController = {
     },
     list: function (req,res,next){
         //res.send ("prueba");
-        res.render ("products/list",{products});
+        db.Productos.findAll()
+        .then(function (producto){
+            res.render ("products/list",{Producto});
+        })
+
     }
 }
 

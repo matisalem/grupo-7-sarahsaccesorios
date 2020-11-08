@@ -20,14 +20,12 @@
         <label for="product_price" class= 'createProduct'>Precio en pesos</label>
         <input type="number" name="product_price" value="<%= product.product_price %>" required>
         <label for="product_description" class= 'createProduct'>Descripción</label>
-        <input type="text" name="product_description" value="<%= product.product_description %>" required   >
-
-        <textarea name="product_description" value="<%= product.product_description %>" required ></textarea>
+        <textarea name="product_description"  required ><%= product.product_description %></textarea>
 
 
         <label for="product_category" class= 'createProduct'>Categorias</label>
 
-        <select name="product_category" value="<%= product.product_category %>" required>
+        <select name="product_category" value="<%= product.product_category %>"  multiple required>
             <option value="categoria 1">Categoria 1</option>
             <option value="categoria 2">Categoria 2</option>
             <option value="categoria 3">Categoria 3</option>

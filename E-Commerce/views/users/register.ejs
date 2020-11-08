@@ -13,19 +13,23 @@
 <body>
     <%- include("../partials/header",{}) %>
     <main>
-
-        <% if (typeof errors != 'undefined') { %>
-            <p>ERROR</p>
-            <ul>
-                 <%for (let i =0; i = errors.length; i++) { %>
-                    <li>
-                        <%=errors[i].msg%>
-                    </li>
-                 <%  } %>
-            </ul>
-
-        <%  } %>
+        
         <div class= "bloque"><!--es unicamente para ocupar el espacio del header--></div>
+        <div class='errores'>
+            
+            <% if (typeof errors != 'undefined') { %>
+                <p>ERROR</p>
+                <ul>
+                     <%for (let i = 0; i < errors.length; i++) { %>
+                        <li>
+                            <%=errors[i].msg%>
+                        </li>
+                     <%  } %>
+                </ul>
+    
+            <%  } %>
+    
+        </div>
         <form action="/users/register" method="POST">
         <h2>Datos para el registro</h2>
         <input type="text" name= "user_id" placeholder="NOMBRE DE USUARIO" required>

@@ -54,5 +54,5 @@ module.exports = (sequelize, dataTypes) =>{
 
 
 
-    return Carrito;
+    return Carrito_Producto;
 }
