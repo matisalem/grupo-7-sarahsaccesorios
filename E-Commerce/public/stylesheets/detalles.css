@@ -22,10 +22,21 @@ main section {
     background-color: lightblue;
     margin-bottom: 10px;
 }
+
+body .cantidad .fas {
+    margin-top: 6px
+}
+
+.precio{
+    margin-top: 0px;
+    margin-bottom: 7px;
+}
+
 main{
     justify-content: center;
     flex-wrap: wrap;
 }
+
 
 .foto{
     height: 40%;
@@ -33,6 +44,17 @@ main{
     background-size: 100% 100%;
     width: 90%;
     text-align: center;
+    margin-top: 10px;
+}
+
+h5{
+    border: solid 1px grey;
+    width: 90%;
+    text-align: center;
+    border-radius: 18px;
+    margin: 3px 5px;
+    margin-bottom: 12px;
+
 }
 
 img{
@@ -49,7 +71,7 @@ img{
     align-items: center;
 }
 
-h2, h3, h5, button, div.cantidad{
+h2, h3, button, div.cantidad{
     width: 100%;
     text-align: center;
 }
@@ -91,6 +113,15 @@ button{
     font-weight: bold;
 }
 
+.pre4 h1{
+    text-align: center;
+    text-decoration: underline;
+}
+
+.pre4 section{
+    width: 100%
+}
+
 @media (min-width: 450px){
     main section {
         flex-direction: row;
@@ -103,6 +134,49 @@ button{
         width: 80%;
         text-align: center;
     }
+
+    body .cantidad .fas {
+        margin-top: 2px;
+
+    }
+    .pre4{
+        flex-direction: row;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around
+    }
+
+    .pre4 section{
+        margin: auto
+    }
+
+
+    .pre4 h1{
+        display: inline-block;
+        width: 100%
+    }
+
+    .pre4 .producto{
+        width: 40%
+    }
+}
+
+@media (min-width: 820px){
+    .detalle{
+        height: 90%;
+        justify-content: space-around;
+    }
+
+    .btn_comprar{
+        margin-top: 0px;
+        margin-bottom: 20px;
+    }
+
+    .precio{
+        margin-bottom: 20px;
+    }
+   
+
 }
 
 /*

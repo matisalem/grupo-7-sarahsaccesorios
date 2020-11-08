@@ -13,14 +13,37 @@ input{
     margin: 2px 5px 10px 5px;
     text-align: center;
     border: 0px;
-    border-bottom: dashed 1px black;
+    border-bottom: solid 1px darkmagenta;
 }
+
+label{
+    color: rgb(99, 12, 12)
+}
+
+textarea{
+     width: 60%;
+     padding: 5px;
+     margin: 2px 5px 10px 5px;
+     text-align: center;
+     border: solid 1px darkmagenta;
+     border-radius: 8px
+}
+
+select{
+     width: 60%;
+     padding: 5px;
+     margin: 2px 5px 10px 5px;
+     text-align: center;
+     border: solid 1px darkmagenta;
+     border-radius: 8px;
+}
+
 .btn_registro{
     width: auto;
     margin: 15px 5px;
     border-radius: 3px;
     border: 2px solid #e73378;
-    background-color: #f55492;
+    background-color:rgb(255, 182, 193);
     color: rgb(238, 235, 230);
     font-size: 20px;
     font-weight: 600px;
@@ -35,4 +58,19 @@ label.createProduct {
 
 label:nth-child(1) {
     margin-top: 125px;
+}
+
+.createProduct{
+    margin-top: 20px;
+}
+
+section{
+    width: 60%;
+    padding: 5px;
+    margin: 2px 5px 10px 5px;
+    text-align: center;
+}
+
+section input{
+    width: 40%;
 }

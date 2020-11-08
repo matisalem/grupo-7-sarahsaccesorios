@@ -24,7 +24,7 @@
     <% for(var i=0 ; i < products.length; i++) {%>
         <tr>
         <td><%= products[i].product_id %></td>
-        <td><%= products[i].product_nombre %></td>
+        <td><%= products[i].product_name %></td>
         <td><%= products[i].product_price %></td>
         <td><%= products[i].product_description %></td>
         <td><%= products[i].product_category %></td>
@@ -37,7 +37,7 @@
     
     <% }%>
     </table>
-    <a href="/products/create">Agregar un nuevo producto</a>S
+    <a href="/products/create">Agregar un nuevo productos</a>
     <!--Footer-->
     <%- include("../partials/footer",{}) %>
     

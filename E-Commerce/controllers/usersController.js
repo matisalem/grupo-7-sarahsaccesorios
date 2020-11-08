@@ -1,6 +1,8 @@
 const fs = require ('fs');
 let usuarioActivo = JSON.parse(fs.readFileSync (__dirname + "/../database_/usuarioActivo.json"));
 let usuarios = JSON.parse(fs.readFileSync (__dirname + "/../database_/users.json"));
+const {check, body, validationResult} = require('express-validator');
+
 
 const userController = {
     perfil: function(req,res,next){
@@ -35,11 +37,19 @@ const userController = {
         res.render ("users/register")
     },
     store: function (req,res,next){
+        let errors = validationResult(req);
+
+        if (errors.isEmpty()){
+
         let newUsuario = req.body;
         newUsuario.user_id = Number (req.body.user_id);
         usuarios.push (newUsuario);
         fs.writeFileSync (__dirname + "/../database_/users.json",JSON.stringify(usuarios));
         res.send ("Alta exitosa!!!!");
+
+    } else{
+        res.render('users/register', {errors: errors.errors})
+    }
 
     },
     reset: function (req,res,next){

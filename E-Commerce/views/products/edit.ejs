@@ -14,15 +14,29 @@
     <%- include("../partials/header",{}) %>
     <form action="/products/edit/<%= product.product_id %>" method="POST">
         <label for="product_id" class= 'createProduct'>ID</label>
-        <input type="text" name="product_id" value="<%= product.product_id %>" required>
+        <input type="number" name="product_id" value="<%= product.product_id %>" required>
         <label for="product_nombre" class= 'createProduct'>Nombre del articulo</label>
-        <input type="text" name="product_nombre" value="<%= product.product_nombre %>" required>
+        <input type="text" name="product_name" value="<%= product.product_name %>" required>
         <label for="product_price" class= 'createProduct'>Precio en pesos</label>
-        <input type="text" name="product_price" value="<%= product.product_price %>" required>
+        <input type="number" name="product_price" value="<%= product.product_price %>" required>
         <label for="product_description" class= 'createProduct'>Descripción</label>
         <input type="text" name="product_description" value="<%= product.product_description %>" required   >
+
+        <textarea name="product_description" value="<%= product.product_description %>" required ></textarea>
+
+
         <label for="product_category" class= 'createProduct'>Categorias</label>
+
+        <select name="product_category" value="<%= product.product_category %>" required>
+            <option value="categoria 1">Categoria 1</option>
+            <option value="categoria 2">Categoria 2</option>
+            <option value="categoria 3">Categoria 3</option>
+            <option value="categoria 4">Categoria 4</option>
+            <option value="categoria 5">Categoria 5</option>
+        </select>
+        
         <input type="text" name="product_category" value="<%= product.product_category %>" required   >
+
         <label for="product_size" class= 'createProduct'>Tamaño</label>
         <input type="text" name="product_size" value="<%= product.product_size %>" required   >
         <label for="product_color" class= 'createProduct'>Colores</label>

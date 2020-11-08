@@ -1,7 +1,6 @@
 const fs = require ('fs');
 //pongo aca el products, para poder utilizarlo en todas las funciones.
 let products = JSON.parse(fs.readFileSync (__dirname + "/../database_/products.json"));
-
 const productsController = {
     create: function(req,res,next){
         //renderizo el formulario    
@@ -9,6 +8,8 @@ const productsController = {
         } ,
     store: function (req,res,next){
             
+            //validation result
+            console.log(validationResult(req))
             //Tomo los datos del body. Tomo el producto como objeto
             let newProducts = req.body;
             //Casteo los campos - Porque aun que el tipo sea number viene como string
@@ -37,7 +38,7 @@ const productsController = {
         //busco el producto por ID para editarlo
         products.forEach(function(product) {
             if(product.product_id == req.params.product_id){
-                product.product_nombre = req.body.product_nombre;
+                product.product_name = req.body.product_name;
                 product.product_price = req.body.product_price;
                 product.product_description = req.body.product_description;
                 product.product_category = req.body.product_category;

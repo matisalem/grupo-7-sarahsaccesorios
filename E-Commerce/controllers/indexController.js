@@ -10,7 +10,8 @@ const indexController = {
     detalle: function (req,res,next){
         //Envio al Detalle del producto
         res.render ("detalleProducto");
-    } 
+    }
+
 }
 
 module.exports = indexController;
