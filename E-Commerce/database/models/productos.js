@@ -26,17 +26,17 @@ module.exports = (sequelize, dataTypes) =>{
                 foreignKey: 'categoria_id'
             }
         )
- /*       Productos.hasMany(
+             Productos.hasMany(
             models.Carrito_Producto,
             {
-                as : 'productos',
+                as : 'productos1',
                 foreignKey: 'productos_id'
             }
-        ) */
+        ) 
         Productos.hasMany(
             models.Imagen_Producto,
             {
-                as : 'productos',
+                as : 'productos2',
                 foreignKey: 'productos_id'
             }
         )

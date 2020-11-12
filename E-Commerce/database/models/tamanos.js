@@ -17,16 +17,16 @@ module.exports = (sequelize, dataTypes) =>{
     const Tamanos = sequelize.define(alias,cols,config);
     Tamanos.associate = function(models){
         Tamanos.hasMany(
-            models.Tamano_producto,
+            models.Producto_Tamano,
             {
-                as : 'tamanos',
+                as : 'tamanos1',
                 foreignKey: 'tamano_id'
             }
         )
         Tamanos.hasMany(
             models.Carrito_Producto,
             {
-                as : 'tamanos',
+                as : 'tamanos2',
                 foreignKey: 'tamano_id'
             }
         )

@@ -36,7 +36,14 @@
         <input type="text" name="product_category" value="<%= product.product_category %>" required   >
 
         <label for="product_size" class= 'createProduct'>Tamaño</label>
-        <input type="text" name="product_size" value="<%= product.product_size %>" required   >
+        <section>
+        <label for="product_size_numero" class= 'createProduct'>Numero</label>
+        <input type="text" name="product_size_numero" value="<%= product.product_size_numero %>" required   >
+        </section>
+        <section>
+        <label for="product_size_unidad" class= 'createProduct'>Unidad</label>
+        <input type="text" name="product_size_unidad" value="<%= product.product_size_unidad %>" required   >
+        </section>
         <label for="product_color" class= 'createProduct'>Colores</label>
         <input type="text" name="product_color" value="<%= product.product_color %>" required   >
         <button type="submit" class= "btn_registro">Guardar cambios</button>

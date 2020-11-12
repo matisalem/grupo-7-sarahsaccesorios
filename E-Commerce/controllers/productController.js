@@ -46,7 +46,8 @@ const productsController = {
                 product.product_price = req.body.product_price;
                 product.product_description = req.body.product_description;
                 product.product_category = req.body.product_category;
-                product.product_size = req.body.product_size;
+                product.product_size = req.body.product_size_numero;
+                product.product_size = req.body.product_size_unidad;
                 product.product_color = req.body.product_color;
                 
             }
