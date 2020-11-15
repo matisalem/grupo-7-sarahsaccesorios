@@ -14,35 +14,41 @@
 
     <form action="/products/create" method="POST">
         <label for="product_id" class= 'createProduct'>ID</label>
-        <input type="number" name="product_id" required>
+        <input type="number" name="product_id" required value='<%= idProducto %>'>
         <label for="product_name" class= 'createProduct'>Nombre del articulo</label>
         <input type="text" required name="product_name">
-        <label for="product_price" class= 'createProduct'>Precio en pesos</label>
-        <input type="number" required name="product_price">
+        
         <label for="product_description" class= 'createProduct'>Descripción</label>
         <textarea required name="product_description"></textarea>
         <label for="product_category" class= 'createProduct'>Categoria</label>
-        <select name="product_category" multiple>
-            <option value="categoria 1">Categoria 1</option>
-            <option value="categoria 2">Categoria 2</option>
-            <option value="categoria 3">Categoria 3</option>
-            <option value="categoria 4">Categoria 4</option>
-            <option value="categoria 5">Categoria 5</option>
+        <select name="product_category">
+           <% for (let i = 0 ; i < Categorias.length; i++) { %>
+            <option value="<%= Categorias[i].id %>"><%= Categorias[i].nombre %></option>
+            <%  } %>
         </select>
-        <label for="product_size" class= 'createProduct'>Tamaño</label>
-        <section>
-        <label for="product_size" class= 'createProduct'>numero</label>
-        <input type="number" required name="product_size_numero">
-    </section>
-    <section>
-        <label for="product_size" class= 'createProduct'>unidad</label>
-        <input type="text" required name="product_size_unidad">
-    </section>
         <label for="product_color" class= 'createProduct'>Colores</label>
         <input type="text" required name="product_color">
+        <label for="product_discount" class= 'createProduct'>Descuento</label>
+        <input type="number" required name="product_discount" value="0">
+        <section class= 'precios'> 
+            <button class = "btn_agrega" onclick = agregarPrecio()>Agregar precio por tamaño</button>
+            <br>
+        </section>
+        
+        
         <button type="submit" class= "btn_registro">Crear</button>
     </form>
     <!--Footer-->
     <%- include("../partials/footer",{}) %>
+    <script> 
+    function agregarPrecio(){
+        document.querySelector(".precios").innerHTML += "<section class= 'precios'>"
+        document.querySelector(".precios").innerHTML += "<label for='product_tamano' class= 'createProduct'>Tamaño</label>" 
+        document.querySelector(".precios").innerHTML += "<input type='text' required name='product_tamano'>" 
+        document.querySelector(".precios").innerHTML += "<label for='product_price' class= 'createProduct'>Precio en pesos</label>" 
+        document.querySelector(".precios").innerHTML += "<input type='number' required name='product_price'>"
+        document.querySelector(".precios").innerHTML += "</section>"
+    }
+    </script>
 </body>
 </html>

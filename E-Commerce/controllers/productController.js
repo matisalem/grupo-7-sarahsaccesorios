@@ -1,31 +1,38 @@
 const fs = require ('fs');
-let db = require('../database/models')
+let db = require('../database/models');
+const categorias = require('../database/models/categorias');
 //pongo aca el products, para poder utilizarlo en todas las funciones.
 let products = JSON.parse(fs.readFileSync (__dirname + "/../database_/products.json"));
 const productsController = {
     create: function(req,res,next){
-        
-        db.Productos.findAll()
-        .then(function(Productos){
-            return res.render("products/create", )
+        db.Categorias.findAll()
+        .then(function(Categorias){
+            db.Productos.findAll()
+            .then(function(producto){
+                let idProducto = producto[producto.length].id;
+                return res.render("products/create",{Categorias,idProducto})
+            })    
+            
+            
         })
-        
-        res.render ("products/create");
+        .catch (function(error) {
+            console.log (error)
+         })   
         } ,
     store: function (req,res,next){
-            
-            //Tomo los datos del body. Tomo el producto como objeto
-            let newProducts = req.body;
-            //Casteo los campos - Porque aun que el tipo sea number viene como string
-            newProducts.product_id = Number (req.body.product_id);
-            //Agrego propiedad en el la variable
-            products.productsStock = 0;
-            //cargo los productos en la variable
-            products.push (newProducts);
-            //cargo la variable completa en el JSON
-            fs.writeFileSync (__dirname + "/../database_/products.json",JSON.stringify(products));
-            // muestro respuesta al usuario
-            res.redirect ("/products/list");
+        db.Productos.create({
+            nombre: req.body.product_name,
+            descripcion: req.body.product_description,
+            categoria_id: req.body.product_category,
+            descuento: req.body.product_discount
+        })
+        .then()
+        .then(function(producto){
+            res.send (producto)        
+        })
+        
+        
+        //res.redirect ("/products/list");
     },
     edit: function (req,res,next){
         let productFind;
@@ -68,7 +75,7 @@ const productsController = {
         //res.send ("prueba");
         db.Productos.findAll()
         .then(function (producto){
-            res.render ("products/list",{Producto});
+            res.render ("products/list",{producto});
         })
 
     }

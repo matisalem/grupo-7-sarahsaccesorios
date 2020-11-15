@@ -7,19 +7,27 @@ module.exports = (sequelize, dataTypes) =>{
             autoIncremental: true
         },
         producto_id  : dataTypes.INTEGER,
-        tamano_id  : dataTypes.INTEGER
+        tamano  : dataTypes.STRING,
+        precio  : dataTypes.FLOAT
     }
     let config = {
-        tableName : 'producto_tamano',
+        tableName : 'tamanos',
         timestamps : false
     }
 
     const Producto_Tamano = sequelize.define(alias,cols,config);
     Producto_Tamano.associate = function(models){
         Producto_Tamano.belongsTo(
-            models.Tamanos,
+            models.Productos,
             {
-                as : 'tamanos',
+                as : 'tamanos_producto',
+                foreignKey: 'producto_id'
+            }
+        )
+        Producto_Tamano.hasMany(
+            models.Carrito,
+            {
+                as : 'tamanos_carrito',
                 foreignKey: 'tamano_id'
             }
         )

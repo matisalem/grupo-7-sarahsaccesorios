@@ -37,17 +37,17 @@ module.exports = (sequelize, dataTypes) =>{
             }
         )
         Carrito_Producto.belongsTo(
-            models.Colores,
-            {
-                as : 'colores',
-                foreignKey: 'color_id'
-            }
-        )
-        Carrito_Producto.belongsTo(
-            models.Tamanos,
+            models.Producto_Tamano,
             {
                 as : 'tamanos',
                 foreignKey: 'tamano_id'
+            }
+        )
+        Carrito_Producto.belongsTo(
+            models.Producto_Color,
+            {
+                as : 'colores',
+                foreignKey: 'color_id'
             }
         )
     }

@@ -7,7 +7,7 @@ module.exports = (sequelize, dataTypes) =>{
             autoIncremental: true
         },
         producto_id  : dataTypes.INTEGER,
-        color_id  : dataTypes.INTEGER
+        color  : dataTypes.STRING(50)
     }
     let config = {
         tableName : 'producto_color',
@@ -16,10 +16,17 @@ module.exports = (sequelize, dataTypes) =>{
 
     const Producto_Color = sequelize.define(alias,cols,config);
     Producto_Color.associate = function(models){
-        Producto_Color.belongsTo(
-            models.Colores,
+        Producto_Color.hasMany(
+            models.Productos,
             {
-                as : 'colores',
+                as : 'producto_color1',
+                foreignKey: 'producto_id'
+            }
+        )
+        Producto_Color.hasMany(
+            models.Productos,
+            {
+                as : 'Carrito',
                 foreignKey: 'color_id'
             }
         )

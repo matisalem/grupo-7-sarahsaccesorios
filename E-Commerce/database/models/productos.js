@@ -7,7 +7,6 @@ module.exports = (sequelize, dataTypes) =>{
             autoIncremental: true
         },
         nombre  : dataTypes.STRING,
-        precio : dataTypes.FLOAT,
         descripcion : dataTypes.STRING,
         categoria_id : dataTypes.INTEGER,
         descuento : dataTypes.FLOAT
@@ -22,21 +21,35 @@ module.exports = (sequelize, dataTypes) =>{
         Productos.belongsTo(
             models.Categorias,
             {
-                as : 'categorias',
+                as : 'Categorias2',
                 foreignKey: 'categoria_id'
             }
         )
              Productos.hasMany(
             models.Carrito_Producto,
             {
-                as : 'productos1',
+                as : 'CarritoProducto',
                 foreignKey: 'productos_id'
             }
         ) 
         Productos.hasMany(
             models.Imagen_Producto,
             {
-                as : 'productos2',
+                as : 'ImagenProducto',
+                foreignKey: 'productos_id'
+            }
+        )
+        Productos.hasMany(
+            models.Producto_Color,
+            {
+                as : 'ColorProducto',
+                foreignKey: 'productos_id'
+            }
+        )
+        Productos.hasMany(
+            models.Producto_Tamano,
+            {
+                as : 'TamanoProducto',
                 foreignKey: 'productos_id'
             }
         )
