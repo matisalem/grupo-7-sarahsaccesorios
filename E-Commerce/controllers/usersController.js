@@ -1,4 +1,5 @@
 const fs = require ('fs');
+const session = require('express-session')
 let usuarioActivo = JSON.parse(fs.readFileSync (__dirname + "/../database_/usuarioActivo.json"));
 let usuarios = JSON.parse(fs.readFileSync (__dirname + "/../database_/users.json"));
 const {check, body, validationResult} = require('express-validator');
@@ -28,6 +29,7 @@ const userController = {
                     }else{
                         res.send ("Contraseña Invalida")
                     }
+                req.session.usuarioLogueado = usuario;
                 }
             });
              // muestro respuesta al usuario cuando no existe
