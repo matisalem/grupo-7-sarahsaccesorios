@@ -1,5 +1,6 @@
 const fs = require ('fs');
 let db = require('../database/models');
+var resultadoIdProducto;
 const categorias = require('../database/models/categorias');
 //pongo aca el products, para poder utilizarlo en todas las funciones.
 let products = JSON.parse(fs.readFileSync (__dirname + "/../database_/products.json"));
@@ -7,17 +8,12 @@ const productsController = {
     create: function(req,res,next){
         db.Categorias.findAll()
         .then(function(Categorias){
-            db.Productos.findAll()
-            .then(function(producto){
-                let idProducto = producto[producto.length].id;
-                return res.render("products/create",{Categorias,idProducto})
-            })    
-            
-            
+            return res.render("products/create",{Categorias})
         })
         .catch (function(error) {
-            console.log (error)
-         })   
+            res.send ("error2")
+            //console.log (error)
+         });   
         } ,
     store: function (req,res,next){
         db.Productos.create({
@@ -26,13 +22,39 @@ const productsController = {
             categoria_id: req.body.product_category,
             descuento: req.body.product_discount
         })
-        .then()
+        .then(function(prueba){
+            resultadoIdProducto = prueba;
+        })
         .then(function(producto){
-            res.send (producto)        
+            for (var i =0 ; i< req.body.product_tamano.length; i++){
+                db.Producto_Tamano.create(
+                            {
+                              producto_id: resultadoIdProducto.null,
+                                tamano: req.body.product_tamano[i],
+                                precio: req.body.product_price[i]
+                            }
+                        )
+                        .then()
+                        .then(function(tamano){
+                            for (var i =0 ; i< req.body.product_color.length; i++){
+                                db.Producto_Color.create(
+                                    {
+                                        producto_id: resultadoIdProducto.null,
+                                        color: req.body.product_color[i]
+                                      }      
+                                )
+                                .then()
+                                .then(function(color){
+                                    res.redirect ("/products/list");
+                                })
+                            }
+                            
+                        })
+            }
+            
+
         })
         
-        
-        //res.redirect ("/products/list");
     },
     edit: function (req,res,next){
         let productFind;
@@ -75,8 +97,13 @@ const productsController = {
         //res.send ("prueba");
         db.Productos.findAll()
         .then(function (producto){
-            res.render ("products/list",{producto});
+            res.render ("products/list",{products:producto});
         })
+        .catch (function(error) {
+            res.send (error)
+            //console.log (error)
+         }); 
+        
 
     }
 }

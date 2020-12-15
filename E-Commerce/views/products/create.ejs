@@ -8,13 +8,15 @@
     <link rel="stylesheet" href="/stylesheets/productCreateEdit.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <title>Alta de producto</title>
+    
+
 </head>
+
 <body>
     <%- include("../partials/header",{}) %>
 
     <form action="/products/create" method="POST">
-        <label for="product_id" class= 'createProduct'>ID</label>
-        <input type="number" name="product_id" required value='<%= idProducto %>'>
+    
         <label for="product_name" class= 'createProduct'>Nombre del articulo</label>
         <input type="text" required name="product_name">
         
@@ -27,7 +29,14 @@
             <%  } %>
         </select>
         <label for="product_color" class= 'createProduct'>Colores</label>
-        <input type="text" required name="product_color">
+        <section class= "product_color">
+
+        </section>
+        <label for="product_color" class= 'createProduct'>Color</label>
+        <input type="text"  name="color" class ="colorNuevo" value ="">
+        <section class= 'color'> 
+            <input class = "btn_agrega" type="button" value = 'agregar color' onclick = agregarColor()>
+        </section>
         <label for="product_discount" class= 'createProduct'>Descuento</label>
         <input type="number" required name="product_discount" value="0">
         <section class= 'precios'> 
@@ -38,17 +47,32 @@
         
         <button type="submit" class= "btn_registro">Crear</button>
     </form>
+    
     <!--Footer-->
     <%- include("../partials/footer",{}) %>
     <script> 
-    function agregarPrecio(){
-        document.querySelector(".precios").innerHTML += "<section class= 'precios'>"
-        document.querySelector(".precios").innerHTML += "<label for='product_tamano' class= 'createProduct'>Tamaño</label>" 
-        document.querySelector(".precios").innerHTML += "<input type='text' required name='product_tamano'>" 
-        document.querySelector(".precios").innerHTML += "<label for='product_price' class= 'createProduct'>Precio en pesos</label>" 
-        document.querySelector(".precios").innerHTML += "<input type='number' required name='product_price'>"
-        document.querySelector(".precios").innerHTML += "</section>"
-    }
-    </script>
+
+        function agregarPrecio(){
+             //document.querySelector(".contadorTamano").setAttribute(values,2) 
+    
+            document.querySelector(".precios").innerHTML += "<section class= 'precios'>"
+            document.querySelector(".precios").innerHTML += "<label for='product_tamano' class= 'createProduct'>Tamaño</label>" 
+            document.querySelector(".precios").innerHTML += "<input type='text' required name='product_tamano'>" 
+            document.querySelector(".precios").innerHTML += "<label for='product_price' class= 'createProduct'>Precio en pesos</label>" 
+            document.querySelector(".precios").innerHTML += "<input type='number' required name='product_price'>"
+            document.querySelector(".precios").innerHTML += "</section>"
+            
+        }
+        function agregarColor(){
+
+            var color = document.querySelector(".colorNuevo").value;
+            if(color != ""){ 
+                color = color.toUpperCase();
+            document.querySelector(".product_color").innerHTML += "<input type='text' value ="+color+" name ='product_color'>";
+            document.querySelector(".colorNuevo").value = "";
+             }
+        }
+        
+        </script>
 </body>
 </html>

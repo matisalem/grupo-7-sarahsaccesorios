@@ -3,38 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel= "stylesheet" href= "/stylesheets/header.css">
     <link rel="stylesheet" href="/stylesheets/footer.css">
     <link rel="stylesheet" href="/stylesheets/productList.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <title>Lista de productos</title>
 </head>
 <body>
-    
+    <%- include("../partials/header",{}) %>
     <table>
         <tr>
             <td>ID</td>
             <td>NOMBRE</td>
-            <td>PRECIO</td>
             <td>DESCRIPCIÓN</td>
             <td>CATEGORIA</td>
-            <td>TAMAÑO</td>
-            <td>COLOR</td>
-            <td>ACCIONES</td>
+            <td>PRECIO</td>
+            <td>DESCUENTO</td>
             </tr>
     <% for(var i=0 ; i < products.length; i++) {%>
         <tr>
-        <td><%= products[i].product_id %></td>
-        <td><%= products[i].product_name %></td>
-        <td><%= products[i].product_price %></td>
-        <td><%= products[i].product_description %></td>
-        <td><%= products[i].product_category %></td>
-        <td><%= products[i].product_size %></td>
-        <td><%= products[i].product_color %></td>
+        <td><%= products[i].id %></td>
+        <td><%= products[i].nombre %></td>
+        <td><%= products[i].descripcion %></td>
+        <td><%= products[i].categoria_id %></td>
+        <td><%= products[i].precio %></td>
+        <td><%= products[i].descuento %></td>
         <td><button onclick= "location.href='/products/edit/<%= products[i].product_id %>'">Editar</button>
         <button onclick= "location.href='/products/delete/<%= products[i].product_id %>'">Eliminar</button></td>
         </tr>
         
-    
     <% }%>
     </table>
     <a href="/products/create">Agregar un nuevo productos</a>

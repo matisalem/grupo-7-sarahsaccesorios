@@ -10,6 +10,7 @@ module.exports = (sequelize, dataTypes) =>{
         descripcion : dataTypes.STRING,
         categoria_id : dataTypes.INTEGER,
         descuento : dataTypes.FLOAT
+
     }
     let config = {
         tableName : 'productos',
