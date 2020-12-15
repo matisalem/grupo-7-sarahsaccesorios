@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="/stylesheets/register.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <script src="/scripts/formulario.js"></script>
+    
     <title>Formulario de registro</title>
 </head>
 <body>
@@ -15,9 +17,16 @@
     <main>
         
         <div class= "bloque"><!--es unicamente para ocupar el espacio del header--></div>
+
+        <div class='erroress'>
+            <ul>
+                
+            </ul>
+        </div>
         <div class='errores'>
+
             
-            <% if (typeof errors != 'undefined') { %>
+          <% if (typeof errors != 'undefined') { %>
                 <p>ERROR</p>
                 <ul>
                      <%for (let i = 0; i < errors.length; i++) { %>
@@ -32,18 +41,20 @@
         </div>
         <form action="/users/register" method="POST">
         <h2>Datos para el registro</h2>
-        <input type="text" name= "user_id" placeholder="NOMBRE DE USUARIO" required>
-        <input type="email" name= "user_mail" placeholder="EMAIL" required>
-        <input type="text" name= "user_name" placeholder="NOMBRE" required>
-        <input type="text" name= "user_lastname" placeholder="APELLIDO" required>
+        <input id='user_id' type="text" name= "user_id" placeholder="NOMBRE DE USUARIO" required>
+        <div class="fullName"></div>
+        <input id='user_mail' type="email" name= "user_mail" placeholder="EMAIL" required>
+        <input id='user_name' type="text" name= "user_name" placeholder="NOMBRE" required>
+        <input id='user_lastname' type="text" name= "user_lastname" placeholder="APELLIDO" required>
         <input type="tel" name= "user_tel" placeholder="TELEFONO" required>
-        <input type="password" name= "user_password" placeholder="PASSWORD" required>
-        <input type="password" name= "user_password2" placeholder="REINGRESE SU PASSWORD" required>
+        <input id='user_password' type="password" name= "user_password" placeholder="PASSWORD" required>
+        <input id='user_password2' type="password" name= "user_password2" placeholder="REINGRESE SU PASSWORD" required>
 
         <button type="submit" class="btn_registro">Registrarse</button>
         <a href="/users/login">Ya estoy registrado</a>
         </form>
         
+    
 
     </main>
     <!--Footer-->

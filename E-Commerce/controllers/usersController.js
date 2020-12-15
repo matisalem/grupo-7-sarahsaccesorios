@@ -1,4 +1,5 @@
 const fs = require ('fs');
+const bcrypt = require('bcrypt');
 const session = require('express-session')
 let usuarioActivo = JSON.parse(fs.readFileSync (__dirname + "/../database_/usuarioActivo.json"));
 let usuarios = JSON.parse(fs.readFileSync (__dirname + "/../database_/users.json"));
@@ -15,11 +16,30 @@ const userController = {
         },
     loginAceptar: function (req,res,next){
              //Tomo los datos del body. Tomo el usuario como objeto
-             let usuarioActivar = req.body;
+
+
+
+       let usuarioActivar = req.body.user_id;
+       let usuarioContra = req.body.user_password;
              //Casteo los campos - Porque aun que el tipo sea number viene como string
             
+            
             //busco el usuario por ID para logearlo
-            usuarios.forEach(function(usuario) {
+         
+            for (let i = 0; i < usuarios.length; i++){
+                if (usuarioActivar == usuarios[i].mail  && bcrypt.compareSync(usuarioContra = usuarios[i].contrasena)){
+                    res.send ("Hola " + usuario.user_name + "Gracias por logearte");
+                        usuarioActivar.user_id = Number (req.body.user_id);
+                        //cargo la variable completa en el JSON
+                        fs.writeFileSync (__dirname + "/../database_/usuarioActivo.json",JSON.stringify(usuarioActivar));
+                    }else{
+                        res.send ("Contraseña Invalida")
+                    }
+                }
+            
+         
+         
+     /*       usuarios.forEach(function(usuario) {
                 if(usuario.user_id == usuarioActivar.user_id){
                     if(usuario.user_password == usuarioActivar.user_password){
                         res.send ("Hola " + usuario.user_name + "Gracias por logearte");
@@ -32,9 +52,9 @@ const userController = {
                 req.session.usuarioLogueado = usuario;
                 }
             });
-             // muestro respuesta al usuario cuando no existe
+          // muestro respuesta al usuario cuando no existe
              res.send ("El nombre de usuario no existe")
-        },
+        */      },
     register: function (req,res,next){
         res.render ("users/register")
     },
@@ -43,7 +63,16 @@ const userController = {
 
         if (errors.isEmpty()){
 
-        let newUsuario = req.body;
+   let newUsuario = req.body;
+    /*        let newUsuario = {
+                nombre = req.body.user_name,
+                apellido = req.body.user_lastname,
+                mail = req.body.user_mail,
+                telefono = req.body.user_tel,
+                contrasena = bcrypt.hashSync(req.body.user_password)
+
+            }
+*/
         newUsuario.user_id = Number (req.body.user_id);
         usuarios.push (newUsuario);
         fs.writeFileSync (__dirname + "/../database_/users.json",JSON.stringify(usuarios));
