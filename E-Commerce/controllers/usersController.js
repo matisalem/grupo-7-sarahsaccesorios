@@ -89,6 +89,10 @@ const userController = {
     },
     reset_mail: function (req,res,next){
         res.redirect ("../");
+    },
+
+    profile: function(req, res, next){
+        res.render ('users/perfil')
     }
 }
 

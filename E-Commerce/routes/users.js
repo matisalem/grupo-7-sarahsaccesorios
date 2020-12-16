@@ -26,6 +26,6 @@ router.post("/register", [
 
 router.get("/reset",usersController.reset); //Ida del formulario - Presentacion de la pantalla al usuario
 router.post("/reset",usersController.reset_mail); //Ida del formulario - Presentacion de la pantalla al usuario
-
+router.get('/profile', usersController.profile)
 
 module.exports = router;
