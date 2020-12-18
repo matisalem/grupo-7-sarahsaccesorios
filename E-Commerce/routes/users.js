@@ -3,16 +3,20 @@ var router = express.Router();
 const {check, body, validationResult} = require('express-validator');
 
 const usersController = require ('../controllers/usersController.js');
+const adminM = require('../middlewares/adminM');
+const authM = require('../middlewares/authM');
+const guestM = require('../middlewares/guestM');
+
 
 /* Perfil */
-router.get('/perfil/:id',usersController.perfil);
+router.get('/perfil/:id', authM, usersController.perfil);
 /*muestro el login*/
-router.get("/login",usersController.loginPresentar); //Ida del formulario - Presentacion de la pantalla al usuario
+router.get("/login", guestM, usersController.loginPresentar); //Ida del formulario - Presentacion de la pantalla al usuario
 /*guardo el usuario logeado*/
-router.post("/login",usersController.loginAceptar); //Vuelta del formulario - Devolución con el boton.
+router.post("/login", usersController.loginAceptar); //Vuelta del formulario - Devolución con el boton.
 
 /*muestro el Registro*/
-router.get("/register",usersController.register); //Ida del formulario - Presentacion de la pantalla al usuario
+router.get("/register", guestM, usersController.register); //Ida del formulario - Presentacion de la pantalla al usuario
 /*guardo el registro*/
 router.post("/register", [
     check('user_id').isLength({min:6}).withMessage('el nombre de usuario es muy corto'),
@@ -26,6 +30,7 @@ router.post("/register", [
 
 router.get("/reset",usersController.reset); //Ida del formulario - Presentacion de la pantalla al usuario
 router.post("/reset",usersController.reset_mail); //Ida del formulario - Presentacion de la pantalla al usuario
-router.get('/profile', usersController.profile)
+
 
 module.exports = router;
+
