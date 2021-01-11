@@ -1,15 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src='/scripts/giphy.js'></script>
-    <title>Document</title>
+    <link rel= "stylesheet" href= "/stylesheets/header.css">
+    <link rel="stylesheet" href="/stylesheets/footer.css">
+    <link rel="stylesheet" href="/stylesheets/register.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <title>Perfil</title>
 </head>
 <body>
+    <%- include("../partials/header",{}) %>
+    <main>
+        
+        <div class= "bloque"><!--es unicamente para ocupar el espacio del header--></div>
+        <div class='errores'>
+            
+            <% if (typeof errors != 'undefined') { %>
+                <p>ERROR</p>
+                <ul>
+                     <%for (let i = 0; i < errors.length; i++) { %>
+                        <li>
+                            <%=errors[i].msg%>
+                        </li>
+                     <%  } %>
+                </ul>
+    
+            <%  } %>
+    
+        </div>
+        <form action="/users/perfil" method="POST">
+        <h2>Mis Datos</h2>
+        <input type="hidden"  name= "user_id" placeholder="NOMBRE DE USUARIO" required value = <%=usuario.user_name %>>
+        <input type="hidden" name= "user_mail" placeholder="EMAIL" required value = <%=usuario.email %>>
+        Nombre
+        <input type="text" name= "user_name" placeholder="NOMBRE" required value = <%=usuario.nombre %>>
+        Apellido
+        <input type="text" name= "user_lastname" placeholder="APELLIDO" required value = <%=usuario.apellido %>> 
+        Telefono
+        <input type="tel" name= "user_tel" placeholder="TELEFONO" required value = <%=usuario.telefono %>>
+        Nueva Contraseña
+        <input type="password" name= "user_password" placeholder="NUEVA PASSWORD">
 
+        <button type="submit" class="btn_registro">Actualizar</button>
+        <!-- ><a href="/users/login">Cerrar Sesión</a>-->
+        </form>
+        
 
-
-    <h1></h1>
+    </main>
+    <!--Footer-->
+    <%- include("../partials/footer",{}) %>
 </body>
 </html>

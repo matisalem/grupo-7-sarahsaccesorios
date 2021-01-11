@@ -1,49 +1,101 @@
 const fs = require ('fs');
-let usuarioActivo = JSON.parse(fs.readFileSync (__dirname + "/../database_/usuarioActivo.json"));
-let usuarios = JSON.parse(fs.readFileSync (__dirname + "/../database_/users.json"));
-const {check, body, validationResult} = require('express-validator');
-const { RSA_NO_PADDING } = require('constants');
+const session = require('express-session')
+let usuarioActivo;
 let db = require('../database/models');
+const {check, body, validationResult} = require('express-validator');
+var bcrypt = require('bcrypt');
 
 const userController = {
     perfil: function(req,res,next){
         //renderizo el formulario 
-            res.render ("users/perfil");
+            res.render ("users/perfil",{usuario:usuarioActivo});
         } ,
-    loginPresentar: function (req,res,next){
-            res.render ("users/login",{erroralLoguear: ""})
-        },
-    loginAceptar: function (req,res,next){
-             //Tomo los datos del body. Tomo el usuario como objeto
-             let usuarioActivar = req.body;
-             //Casteo los campos - Porque aun que el tipo sea number viene como string
-             db.Usuarios.findOne(
-                {where : {user_name: usuarioActivar.user_id,
-                        contrasena : usuarioActivar.user_password           
-                }  }
-            )
-            .then(function(usuario){
-                console.log (usuario)
-                if (usuario != null) {
-                    req.session.usuarioLogueado = usuario.user_name;
-                    if (req.body.remember != undefined) {
-                        res.cookie('remember', usuario.user_name, { maxAge: 300000 })
-                    }
-                    res.redirect ("../")
-                }else   
-                {
-                    res.render ("users/login", {erroralLoguear: "Usuario o contraseña invalidos"})
+    actualizarPerfil: function (req,res,next){
+        if (usuarioActivo.nombre != req.body.user_name) { 
+            db.Usuarios.update ({
+                nombre: req.body.user_name
+                    },
+                {where:{user_name: req.body.user_id} 
+                })
+            }
+        if (usuarioActivo.apellido != req.body.user_lastname) { 
+                db.Usuarios.update ({
+                    apellido: req.body.user_lastname
+                        },
+                    {where:{user_name: req.body.user_id} 
+                    })
                 }
-               
-            })
-            .catch (function(error) {
-                res.send ("No existe el usuario")
-                //console.log (error)
-             }); 
+        if (usuarioActivo.telefono != req.body.user_tel) { 
+            db.Usuarios.update ({
+                telefono: req.body.user_tel
+                    },
+                {where:{user_name: req.body.user_id} 
+                })
+            }
+        if (req.body.user_password != ""){
+            db.Usuarios.update ({
+                contrasena: bcrypt.hashSync(req.body.user_password, 10)
+                    },
+                {where:{user_name: req.body.user_id} 
+                })
+            } 
+        
+        res.redirect ("../")
+    },
+    loginPresentar: function (req,res,next){
+            
+            if (req.cookies.remember == undefined) {
+                res.render ("users/login" )                                
+            }else
+            {
+                db.Usuarios.findOne ({
+                    where: {
+                        user_name: req.cookies.remember
+                            }
+                    })
+                .then (function(user){
+                    usuarioActivo = user;
+                    //if (user) {
+                        res.redirect ("perfil/"+req.cookies.remember)
+                    //}
+                });
+                
+            }
+            
         },
+
+    loginAceptar: function (req, res, next) {
+            let errors = validationResult(req)
+            if (!errors.isEmpty()) {
+                res.render("users/login", { errors: errors.errors })
+            }
+    
+            db.Usuarios.findOne({
+                where: {
+                    user_name: req.body.user_id
+                }
+            })
+                .then(function (usuario) {
+                    if (!usuario) {
+                        res.render("users/login", { errors: "Usuario invalido." });
+                    } else {
+                        if (bcrypt.compareSync(req.body.user_password, usuario.contrasena)) {
+                            req.session.usuarioLogueado = usuario
+                            if (req.body.remember == undefined) {
+                                res.cookie('remember', req.body.user_id, { maxAge: 300000 })                                
+                            }
+                            res.redirect('/');  
+                        } else {
+                            res.render("users/login", { errors: "Contraseña invalida." });
+                        }
+                    }
+    
+                })
+             },
     register: function (req,res,next){
         res.render ("users/register")
     },
+
     store: function (req,res,next){
         let errors = validationResult(req);
 
@@ -54,9 +106,10 @@ const userController = {
         db.Usuarios.findOne({
             where: {
                 email: req.body.user_mail
-            }
-        })
+                    }
+            })
             .then(function (usuario) {
+                console.log ("entro")
                 if (!usuario) {
                     db.Usuarios.create({
                         user_name: req.body.user_id,
@@ -76,13 +129,17 @@ const userController = {
                     res.render("users/register", { errorAlLoguear: "Ya hay una cuenta con ese mail" });
                 }
             })
-
-    },
+         },
     reset: function (req,res,next){
         res.render ("users/reset");
 
     },
     reset_mail: function (req,res,next){
+        db.Usuarios.update ({
+            contrasena: bcrypt.hashSync("123456", 10)
+                },
+               {where:{email: req.body.user_email} 
+            })
         res.redirect ("../");
     }
 }
