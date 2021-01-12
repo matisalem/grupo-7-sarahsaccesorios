@@ -3,7 +3,7 @@ let db = require('../database/models');
 var resultadoIdProducto;
 const categorias = require('../database/models/categorias');
 //pongo aca el products, para poder utilizarlo en todas las funciones.
-let products = JSON.parse(fs.readFileSync (__dirname + "/../database_/products.json"));
+//let products = JSON.parse(fs.readFileSync (__dirname + "/../database_/products.json"));
 const productsController = {
     create: function(req,res,next){
         db.Categorias.findAll()
@@ -84,14 +84,32 @@ const productsController = {
         res.redirect ("/products/list"); //Muestro siempre en positivo porque si lo encontro a la ida a la vuelta tambien lo debe encontrar. 
     },
     delete: function (req,res,next){
-        let newProducts = products.filter (function (product){
-            return product.product_id != req.params.product_id;
-        });
+        
 
-        //cargo la variable completa en el JSON - de los nuevos productos con el que quiero borrar filtrado
-        fs.writeFileSync (__dirname + "/../database_/products.json",JSON.stringify(newProducts));
-        // muestro respuesta al usuario
-        res.redirect ("/products/list");
+
+        let productFind;
+        //busco el producto por ID
+        products.forEach(function(product) {
+            if(product.product_id == req.params.product_id){
+                productFind = product;
+                products.find({ where: { id: productFind } })
+                 .then(user => {
+
+                    if (user) {
+                 return user.destroy();
+                 }
+                 })
+                 .then(() => {
+                 console.log("Ya no existe en la BBDD.");
+                 })
+                 .catch(error => {
+                 console.log("Error:", error);
+                 });
+            }
+        });
+        
+        
+        
     },
     list: function (req,res,next){
         //res.send ("prueba");

@@ -10,6 +10,14 @@ const guestM = require('../middlewares/guestM');
 
 /* Perfil */
 router.get('/perfil/:id', authM, usersController.perfil);
+router.post('/perfil',[
+    check('user_id').isLength({min:6}).withMessage('el nombre de usuario es muy corto'),
+    check('user_mail').isEmail().withMessage('el email no es valido'),
+    check('user_name').isLength({min:2}).withMessage('el nombre es muy corto'),
+    check('user_lastname').isLength({min:2}).withMessage('el apellido es muy corto'),
+    check('user_tel').isMobilePhone().withMessage('el numero de telefono no es valido'),
+    check('user_password').isLength({min:8}).withMessage('la contraseña es muy corta')
+],usersController.actualizarPerfil);
 /*muestro el login*/
 router.get("/login", guestM, usersController.loginPresentar); //Ida del formulario - Presentacion de la pantalla al usuario
 /*guardo el usuario logeado*/

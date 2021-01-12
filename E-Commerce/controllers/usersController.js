@@ -8,57 +8,83 @@ var bcrypt = require('bcrypt');
 const userController = {
     perfil: function(req,res,next){
         //renderizo el formulario 
-            res.render ("users/perfil",{usuario:usuarioActivo});
+            if (res.locals.isAuthenticated) {
+                    
+                db.Usuarios.findOne ({
+                    where: {
+                        id: res.locals.usuarioLogueado.id
+                            }
+                    })
+                .then (function(user){
+                    usuarioActivo = user;
+                    console.log (user)
+                    //if (user) {
+                        res.render ("users/perfil",{usuario:usuarioActivo});
+                        
+                    //}
+                });                             
+            }else
+            {
+                res.render ("users/login" )
+ 
+            }
+            
         } ,
     actualizarPerfil: function (req,res,next){
+
         if (usuarioActivo.nombre != req.body.user_name) { 
+            console.log ("entro")
             db.Usuarios.update ({
                 nombre: req.body.user_name
                     },
-                {where:{user_name: req.body.user_id} 
+                {where:{id: req.body.user_id} 
                 })
+            
             }
         if (usuarioActivo.apellido != req.body.user_lastname) { 
                 db.Usuarios.update ({
                     apellido: req.body.user_lastname
                         },
-                    {where:{user_name: req.body.user_id} 
+                    {where:{id: req.body.user_id} 
                     })
                 }
         if (usuarioActivo.telefono != req.body.user_tel) { 
             db.Usuarios.update ({
                 telefono: req.body.user_tel
                     },
-                {where:{user_name: req.body.user_id} 
+                {where:{id: req.body.user_id} 
                 })
             }
         if (req.body.user_password != ""){
             db.Usuarios.update ({
                 contrasena: bcrypt.hashSync(req.body.user_password, 10)
                     },
-                {where:{user_name: req.body.user_id} 
+                {where:{id: req.body.user_id} 
                 })
             } 
         
         res.redirect ("../")
     },
     loginPresentar: function (req,res,next){
-            
-            if (req.cookies.remember == undefined) {
-                res.render ("users/login" )                                
-            }else
-            {
+
+            if (res.locals.isAuthenticated) {
+                
                 db.Usuarios.findOne ({
                     where: {
-                        user_name: req.cookies.remember
+                        id: res.locals.usuarioLogueado.id
                             }
                     })
                 .then (function(user){
                     usuarioActivo = user;
                     //if (user) {
-                        res.redirect ("perfil/"+req.cookies.remember)
+                        res.redirect ("perfil/"+usuarioActivo.id)
+                        
                     //}
-                });
+                });                             
+            }else
+            {
+                res.render ("users/login" )
+                
                 
             }
             

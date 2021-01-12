@@ -32,7 +32,7 @@
         </div>
         <form action="/users/perfil" method="POST">
         <h2>Mis Datos</h2>
-        <input type="hidden"  name= "user_id" placeholder="NOMBRE DE USUARIO" required value = <%=usuario.user_name %>>
+        <input type="hidden"  name= "user_id" placeholder="NOMBRE DE USUARIO" required value = <%=usuario.id %>>
         <input type="hidden" name= "user_mail" placeholder="EMAIL" required value = <%=usuario.email %>>
         Nombre
         <input type="text" name= "user_name" placeholder="NOMBRE" required value = <%=usuario.nombre %>>

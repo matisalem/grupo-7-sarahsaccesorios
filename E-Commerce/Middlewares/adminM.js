@@ -1,5 +1,5 @@
 let adminM = function (req,res,next){
-    if(req.session.usuarioLogueado.email == 'matiassalem17@gmail.com'){
+    if(req.session.usuarioLogueado.email == 'hbarba00@gmail.com'){
         res.locals.isAdmin = true
         res.locals.adminLogueado = req.session.usuarioLogueado 
         next();
